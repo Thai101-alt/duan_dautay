@@ -17,21 +17,23 @@ class LopModels{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
    public function themlop() {
-        $sql = "INSERT INTO lop (ma_lop, ten_lop) VALUES (:ma_lop, :ten_lop)";
+        $sql = "INSERT INTO lop (MA_LOP, TENLOP, description) VALUES (:ma_lop, :ten_lop, :description)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':ma_lop', $_POST['ma_lop']);
         $stmt->bindParam(':ten_lop', $_POST['ten_lop']);
+        $stmt->bindParam(':description', $_POST['description']);
         return $stmt->execute();
     }
     public function sualop() {
-        $sql = "UPDATE lop SET ten_lop = :ten_lop WHERE ma_lop = :ma_lop";
+        $sql = "UPDATE lop SET TENLOP = :ten_lop, description = :description WHERE MA_LOP = :ma_lop";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':ma_lop', $_POST['ma_lop']);
         $stmt->bindParam(':ten_lop', $_POST['ten_lop']);
+        $stmt->bindParam(':description', $_POST['description']);
         return $stmt->execute();
     }
     public function xoalop() {
-        $sql = "DELETE FROM lop WHERE ma_lop = :ma_lop";
+        $sql = "DELETE FROM lop WHERE MA_LOP = :ma_lop";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':ma_lop', $_POST['ma_lop']);
         return $stmt->execute();

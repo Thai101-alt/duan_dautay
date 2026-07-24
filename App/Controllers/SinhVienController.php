@@ -30,4 +30,33 @@ class SinhVienController{
             }
         }
     }
+    public function suasv()
+{   $this->requireAuth();
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        $this->sinhvien_model->suasv(
+            $_POST['ma_sv'],
+            $_POST['ho_ten'],
+            $_POST['gioi_tinh'],
+            $_POST['ngay_sinh'],
+            $_POST['email'],
+            $_POST['SDT']
+        );
+
+        header("Location: index.php?controller=SinhVienController&action=index");
+        exit;
+    }
+}
+    public function xoasv() {
+        $this->requireAuth();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $result = $this->sinhvien_model->xoasv($_POST['ma_sv']);
+            if ($result) {
+                header('Location: ./index.php?controller=SinhVienController&action=index');
+                exit();
+            } else {
+                echo "Xóa sinh viên thất bại.";
+            }
+        }
+    }
 }

@@ -28,31 +28,31 @@ class SinhVienModels{
             return false;
         }
 
-        $sql = "INSERT INTO sinh_vien (ma_sv, ho_ten, gioi_tinh, ngay_sinh, email, SDT) VALUES (:ma_sv, :ho_ten, :gioi_tinh, :ngay_sinh, :email, :sdt)";
+        $sql = "INSERT INTO sinh_vien (MASV, HO_TEN, GIOI_TINH, NGAY_SINH, EMAIL, SDT) VALUES (:ma_sv, :ho_ten, :gioi_tinh, :ngay_sinh, :email, :SDT)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':MASV', $ma_sv);
-        $stmt->bindParam(':HO_TEN', $ho_ten);
-        $stmt->bindParam(':GIOI_TINH', $gioi_tinh);
-        $stmt->bindParam(':NGAY_SINH', $ngay_sinh);
-        $stmt->bindParam(':EMAIL', $email);
+        $stmt->bindParam(':ma_sv', $ma_sv);
+        $stmt->bindParam(':ho_ten', $ho_ten);
+        $stmt->bindParam(':gioi_tinh', $gioi_tinh);
+        $stmt->bindParam(':ngay_sinh', $ngay_sinh);
+        $stmt->bindParam(':email', $email);
         $stmt->bindParam(':SDT', $sdt);
         return $stmt->execute();
     }
-    public function suasv() {
-        $sql = "UPDATE sinh_vien SET ten_sv = :ten_sv, ngay_sinh = :ngay_sinh, gioi_tinh = :gioi_tinh, dia_chi = :dia_chi, ma_lop = :ma_lop WHERE ma_sv = :ma_sv";
+    public function suasv($ma_sv, $ho_ten, $gioi_tinh, $ngay_sinh, $email, $SDT) {
+        $sql = "UPDATE sinh_vien SET HO_TEN = :ho_ten, NGAY_SINH = :ngay_sinh, GIOI_TINH = :gioi_tinh, EMAIL = :email, SDT = :SDT WHERE MASV = :ma_sv";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':MASV', $_POST['ma_sv']);
-        $stmt->bindParam(':HO_TEN', $_POST['ho_ten']);
-        $stmt->bindParam(':GIOI_TINH', $_POST['gioi_tinh']);
-        $stmt->bindParam(':NGAY_SINH', $_POST['ngay_sinh']);
-        $stmt->bindParam(':EMAIL', $_POST['email']);
-        $stmt->bindParam(':SDT', $_POST['SDT']);
+        $stmt->bindParam(':ho_ten', $ho_ten);
+        $stmt->bindParam(':ngay_sinh', $ngay_sinh);
+        $stmt->bindParam(':gioi_tinh', $gioi_tinh);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':SDT', $SDT);
+        $stmt->bindParam(':ma_sv', $ma_sv);
         return $stmt->execute();
     }
-    public function xoasv() {
-        $sql = "DELETE FROM sinh_vien WHERE ma_sv = :ma_sv";
+    public function xoasv($ma_sv) {
+        $sql = "DELETE FROM sinh_vien WHERE MASV = :ma_sv";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':MASV', $_POST['ma_sv']);
+        $stmt->bindParam(':ma_sv', $ma_sv);
         return $stmt->execute();
     }
 }

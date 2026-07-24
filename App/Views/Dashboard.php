@@ -57,13 +57,6 @@ if (!isset($_SESSION['user'])) {
                 </li>
 
                 <li>
-                    <a href="#">
-                        <i class="fa-solid fa-chalkboard-user"></i>
-                        Giảng viên
-                    </a>
-                </li>
-
-                <li>
                     <a href="index.php?controller=AuthController&action=logout">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         Đăng xuất
@@ -113,15 +106,6 @@ if (!isset($_SESSION['user'])) {
                     </div>
 
                     <i class="fa-solid fa-chalkboard-user"></i>
-                </div>
-
-                <div class="card red">
-                    <div>
-                        <h2>98%</h2>
-                        <p>Tỷ lệ tốt nghiệp</p>
-                    </div>
-
-                    <i class="fa-solid fa-chart-line"></i>
                 </div>
 
             </div>

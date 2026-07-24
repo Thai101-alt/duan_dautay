@@ -1,5 +1,8 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+$dotenv->load();
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $client = new Google_Client();
@@ -12,4 +15,4 @@ $client->setRedirectUri($_ENV['GOOGLE_REDIRECT_URI']);
 
 $client->addScope("email");
 
-$client->addScope("profile");
+$client->addScope("profile");   

@@ -52,12 +52,23 @@ if (!$useremaild) {
     $useremaild = $userModel->getUserByEmail($user->email);
 }
 
+// If user has no password set, require them to create one before full login
+if (empty($useremaild['password'])) {
+    // store temporary info in session and redirect to password set page
+    $_SESSION['temp_user_email'] = $useremaild['email'];
+    $_SESSION['temp_user_name'] = $useremaild['name'];
+    $_SESSION['temp_user_picture'] = $user->picture ?? null;
+    header("Location: index.php?controller=AuthController&action=setPassword");
+    exit();
+}
+
+// user has password — complete login
 $_SESSION['user'] = [
     'id' => $useremaild['id'],
     'name' => $useremaild['name'],
     'email' => $useremaild['email'],
     'picture' => $user->picture,
-    'role' => $useremaild['role']
+    'role' => $useremaild['role'] ?? 'student'
 ];
 
 header("Location: index.php?controller=AuthController&action=dashboard");
