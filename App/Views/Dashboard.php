@@ -83,7 +83,7 @@ if (!isset($_SESSION['user'])) {
 
                 <div class="card blue">
                     <div>
-                        <h2>120</h2>
+                        <h2><?= (int) ($tong_sv ?? 0) ?></h2>
                         <p>Sinh viên</p>
                     </div>
 
@@ -92,66 +92,13 @@ if (!isset($_SESSION['user'])) {
 
                 <div class="card green">
                     <div>
-                        <h2>15</h2>
+                        <h2><?= (int) ($tong_lop ?? 0) ?></h2>
                         <p>Lớp học</p>
                     </div>
 
                     <i class="fa-solid fa-book-open"></i>
                 </div>
 
-                <div class="card orange">
-                    <div>
-                        <h2>25</h2>
-                        <p>Giảng viên</p>
-                    </div>
-
-                    <i class="fa-solid fa-chalkboard-user"></i>
-                </div>
-
-            </div>
-
-            <div class="dashboard">
-
-                <div class="box">
-                    <h2>Thông báo</h2>
-
-                    <ul>
-                        <li>✔️ Hệ thống hoạt động bình thường.</li>
-                        <li>✔️ Đã cập nhật danh sách sinh viên.</li>
-                        <li>✔️ Có 3 lớp học mới.</li>
-                        <li>✔️ Backup dữ liệu thành công.</li>
-                    </ul>
-
-                </div>
-
-                <div class="box">
-                    <h2>Hoạt động gần đây</h2>
-
-                    <table>
-
-                        <tr>
-                            <th>Thời gian</th>
-                            <th>Nội dung</th>
-                        </tr>
-
-                        <tr>
-                            <td>08:30</td>
-                            <td>Thêm sinh viên mới</td>
-                        </tr>
-
-                        <tr>
-                            <td>09:10</td>
-                            <td>Cập nhật lớp CNTT1</td>
-                        </tr>
-
-                        <tr>
-                            <td>10:20</td>
-                            <td>Đăng nhập hệ thống</td>
-                        </tr>
-
-                    </table>
-
-                </div>
 
             </div>
 

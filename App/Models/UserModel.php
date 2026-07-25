@@ -30,7 +30,11 @@ class UserModel
         $stmt->bindParam(':google_id', $googleId);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':password', $password);
+        if ($password === null || $password === '') {
+            $stmt->bindValue(':password', null, PDO::PARAM_NULL);
+        } else {
+            $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+        }
         $stmt->bindParam(':role', $role);
         return $stmt->execute();
     }

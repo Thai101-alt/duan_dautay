@@ -16,6 +16,15 @@ class LopModels{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Đếm tổng số lớp học (dùng cho Dashboard)
+    public function demLop(){
+        $sql = "SELECT COUNT(*) AS total FROM lop";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return (int)($row['total'] ?? 0);
+    }
    public function themlop() {
         $sql = "INSERT INTO lop (MA_LOP, TENLOP, description) VALUES (:ma_lop, :ten_lop, :description)";
         $stmt = $this->conn->prepare($sql);

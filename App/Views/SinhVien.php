@@ -83,7 +83,10 @@
                 <input type="text" name="ho_ten" required>
 
                 <label>Giới tính</label>
-                <input type="text" name="gioi_tinh" required>
+                <select name="gioi_tinh" required>
+                    <option value="">Chọn giới tính</option>
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
 
                 <label>Ngày sinh</label>
                 <input type="date" name="ngay_sinh" required>
@@ -98,7 +101,7 @@
                 <select name="lop_ids[]" multiple size="4">
                     <?php if (isset($lop) && is_array($lop)): ?>
                         <?php foreach ($lop as $l): ?>
-                            <option value="<?= htmlspecialchars($l['MA_LOP']) ?>"><?= htmlspecialchars($l['TENLOP']) ?></option>
+                            <option value="<?= htmlspecialchars($l['id_LOP']) ?>"><?= htmlspecialchars($l['TENLOP']) ?></option>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </select>
@@ -123,7 +126,11 @@
                 <input type="text" name="ho_ten" id="sua_ho_ten">
 
                 <label>Giới tính</label>
-                <input type="text" name="gioi_tinh" id="sua_gioi_tinh">
+                <select name="gioi_tinh" id="sua_gioi_tinh">
+                    <option value="">Chọn giới tính</option>
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                </select>
 
                 <label>Ngày sinh</label>
                 <input type="date" name="ngay_sinh" id="sua_ngay_sinh">
@@ -138,7 +145,7 @@
                 <select name="lop_ids[]" id="sua_lop_ids" multiple size="4">
                     <?php if (isset($lop) && is_array($lop)): ?>
                         <?php foreach ($lop as $l): ?>
-                            <option value="<?= htmlspecialchars($l['MA_LOP']) ?>"><?= htmlspecialchars($l['TENLOP']) ?></option>
+                            <option value="<?= htmlspecialchars($l['id_LOP']) ?>"><?= htmlspecialchars($l['TENLOP']) ?></option>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </select>

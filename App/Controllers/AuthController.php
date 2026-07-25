@@ -21,7 +21,7 @@ class AuthController
                     'picture' => $user['picture'] ?? null,
                     'role' => $user['role'] ?? 'student'
                 ];
-                header("Location: index.php?controller=DashboardController&action=index");
+                header("Location: index.php?controller=AuthController&action=dashboard");
                 exit();
             } else {
                 echo "<script>alert('Sai email hoặc mật khẩu');history.back();</script>";
@@ -32,6 +32,15 @@ class AuthController
     }
     public function dashboard()
     {
+        require_once __DIR__ . '/../Models/SinhVienModel.php';
+        require_once __DIR__ . '/../Models/LopModel.php';
+
+        $sinhVienModel = new SinhVienModels();
+        $lopModel = new LopModels();
+
+        $tong_sv = $sinhVienModel->demSinhVien();
+        $tong_lop = $lopModel->demLop();
+
         require "./App/Views/Dashboard.php";
     }
     public function logout()
@@ -52,7 +61,8 @@ class AuthController
     }
     public function setPassword()
     {
-        if (!isset($_SESSION)) session_start();
+        if (!isset($_SESSION))
+            session_start();
         require_once __DIR__ . '/../Models/UserModel.php';
         $userModel = new UserModel();
 
@@ -86,5 +96,5 @@ class AuthController
 
         require "./App/Views/SetPassword.php";
     }
-    
+
 }
