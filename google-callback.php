@@ -52,9 +52,7 @@ if (!$useremaild) {
     $useremaild = $userModel->getUserByEmail($user->email);
 }
 
-// If user has no password set, require them to create one before full login
 if (empty($useremaild['password'])) {
-    // store temporary info in session and redirect to password set page
     $_SESSION['temp_user_email'] = $useremaild['email'];
     $_SESSION['temp_user_name'] = $useremaild['name'];
     $_SESSION['temp_user_picture'] = $user->picture ?? null;
@@ -62,7 +60,6 @@ if (empty($useremaild['password'])) {
     exit();
 }
 
-// user has password — complete login
 $_SESSION['user'] = [
     'id' => $useremaild['id'],
     'name' => $useremaild['name'],
